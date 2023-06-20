@@ -1,0 +1,23 @@
+<header>
+    <div class="topnav">
+      <ul>
+        <li><a [routerLink]="['home']"> Web Portal For Motor Vehicle Sales and Spare parts Resale: Admin </a></li>
+      </ul>
+    </div>
+  </header>
+  
+  <nav>
+        <ul>
+          <li><a [routerLink]="['home']" >Home</a></li>
+          <li><a [routerLink]="['seller-table']" >Seller</a></li>
+          <li><a [routerLink]="['customer-table']">Customer</a></li>
+          <li><a [routerLink]="['all-motorvehicle']" >Motor vehicle</a></li>
+          <li><a [routerLink]="['all-sparepart']">Spare parts</a></li>
+          <li><a [routerLink]="['admin-profile']">Profile</a></li>
+          <li><a [routerLink]="['../']" >Log out</a></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+  

@@ -1,0 +1,332 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h1>Motorvehicles</h1>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-secondary" (click)="openToPost(postModal)" >Add MotorVehicle</button>
+        </div>
+    </div>    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Make</th>
+                <th scope="col">Model</th>
+                <th scope="col">Year</th>
+                <th scope="col">Mileage</th>
+                <th scope="col">Price</th>
+                <th scope="col">Condition</th>
+                <th scope="col">Transmission Type</th>
+                <th scope="col">Fuel type</th>
+                <th scope="col">Exterior color</th>
+                <th scope="col">Interior color</th>
+                <th scope="col">Vehicle identification number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Make </td>
+                <td>Model</td>
+                <td>Year</td>
+                <td>Mileage</td>
+                <td>Price</td>
+                <td>Condition</td>
+                <td>TransmissionType</td>
+                <td>FuelType</td>
+                <td>ExteriorColor</td>
+                <td>InteriorColor</td>
+                <td>VehicleIdentificationNumber</td>
+          <td>
+            <button class="btn btn-success" style="margin: 3px;" (click)="openToUpdate(updateModal)"
+            >Edit</button>
+    
+            <button class="btn btn-danger" >Delete</button>
+          </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="d-flex justify-content-between p-2">
+        <!-- <ngb-pagination
+            [collectionSize]="collectionSize"
+            [(page)]="page"
+            [pageSize]="pageSize"
+            (pageChange)="refreshCountries()"
+        >
+        </ngb-pagination> -->
+    
+        <!-- <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+            <option [ngValue]="2">2 items per page</option>
+            <option [ngValue]="4">4 items per page</option>
+            <option [ngValue]="6">6 items per page</option>
+        </select> -->
+    </div>
+    </div>
+    
+    
+    <ng-template #postModal let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Add new MotorVehicle</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <form class="needs-validation" novalidate >
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom01">Make</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Make" required formControlName="Make">
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Model</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="Model" required 
+                    formControlName="Model" >
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustomUsername">Year</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                      </div>
+                      <input type="text" class="form-control" id="validationMotorVehicleYear" placeholder="Year" aria-describedby="inputGroupPrepend" required formControlName="Year">
+                      <div class="invalid-feedback">
+                        Please choose a username.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                  <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom01">Mileage</label>
+                      <input type="text" class="form-control" id="selleremail" placeholder="Mileage" required formControlName="Mileage">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom02">Price</label>
+                      <input type="text" class="form-control" id="sellerpassword" placeholder="Condition"  required formControlName="Condition
+                      ">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustomUsername">Condition</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="sellerphonenumber" placeholder="Condition" aria-describedby="inputGroupPrepend" required formControlName="Condition">
+                        <div class="invalid-feedback">
+                          Please choose a username.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom01">TransmissionType</label>
+                      <input type="text" class="form-control" id="selleremail" placeholder="TransmissionType" required formControlName="TransmissionType">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom02">FuelType</label>
+                      <input type="text" class="form-control" id="sellerpassword" placeholder="FuelType"  required formControlName="FuelType
+                      ">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustomUsername">ExteriorColor</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="sellerphonenumber" placeholder="ExteriorColor" aria-describedby="inputGroupPrepend" required formControlName="ExteriorColor">
+                        <div class="invalid-feedback">
+                          Please choose a username.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom01">InteriorColor</label>
+                      <input type="text" class="form-control" id="selleremail" placeholder="InteriorColor" required formControlName="InteriorColor">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom02">VehicleIdentificationNumber</label>
+                      <input type="text" class="form-control" id="sellerpassword" placeholder="VehicleIdentificationNumber"  required formControlName="VehicleIdentificationNumber
+                      ">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustomUsername">ExteriorColor</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="sellerphonenumber" placeholder="ExteriorColor" aria-describedby="inputGroupPrepend" required formControlName="ExteriorColor">
+                        <div class="invalid-feedback">
+                          Please choose a username.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              
+        </div>
+        <div class="modal-footer">
+        </div>
+    </ng-template>
+    
+    
+    <!-- ya update -->
+    <ng-template #updateModal let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Update Motorvehicle</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+          <form class="needs-validation" novalidate >
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Make</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Make" required formControlName="Make">
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Model</label>
+                <input type="text" class="form-control" id="validationCustom02" placeholder="Model" required 
+                formControlName="Model" >
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationCustomUsername">Year</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                  </div>
+                  <input type="text" class="form-control" id="validationMotorVehicleYear" placeholder="Year" aria-describedby="inputGroupPrepend" required formControlName="Year">
+                  <div class="invalid-feedback">
+                    Please choose a username.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom01">Mileage</label>
+                  <input type="text" class="form-control" id="selleremail" placeholder="Mileage" required formControlName="Mileage">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom02">Price</label>
+                  <input type="text" class="form-control" id="sellerpassword" placeholder="Condition"  required formControlName="Condition
+                  ">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustomUsername">Condition</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="sellerphonenumber" placeholder="Condition" aria-describedby="inputGroupPrepend" required formControlName="Condition">
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom01">Mileage</label>
+                  <input type="text" class="form-control" id="selleremail" placeholder="Mileage" required formControlName="Mileage">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom02">Price</label>
+                  <input type="text" class="form-control" id="sellerpassword" placeholder="Condition"  required formControlName="Condition
+                  ">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustomUsername">Condition</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="sellerphonenumber" placeholder="Condition" aria-describedby="inputGroupPrepend" required formControlName="Condition">
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom01">Mileage</label>
+                  <input type="text" class="form-control" id="selleremail" placeholder="Mileage" required formControlName="Mileage">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom02">Price</label>
+                  <input type="text" class="form-control" id="sellerpassword" placeholder="Condition"  required formControlName="Condition
+                  ">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustomUsername">Condition</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="sellerphonenumber" placeholder="Condition" aria-describedby="inputGroupPrepend" required formControlName="Condition">
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+              
+        </div>
+        <div class="modal-footer">
+        </div>
+    </ng-template>
+    
+    

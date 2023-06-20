@@ -1,0 +1,14 @@
+<div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Customer</header>
+      <form>
+        <input type="text" placeholder="Enter your email">
+        <input type="password" placeholder="Enter your password">
+        <input type="button" class="btn btn-secondary" value="Login" [routerLink]="['nav/customer-home']">
+      </form>
+      <a [routerLink]="['register']"> Don't have account? register here</a> <br>
+      <a [routerLink]="['../']"> Home</a>
+      
+  </div>
+

@@ -1,0 +1,212 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h1>Spareparts</h1>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-secondary" (click)="openToPost(postModal)" >Add Spareparts</button>
+        </div>
+    </div>    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sparepart name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Price</th>
+                <th scope="col">Part description</th>
+                <th scope="col">MotorVehicle model</th>
+                <th scope="col">MotorVehicle make</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Sparepart name </td>
+                <td>Location</td>
+                <td>Price</td>
+                <td>Part description</td>
+                <td>Motorvehicle model</td>
+                <td>MotorVehicle make</td>
+          <td>
+            <button class="btn btn-success" style="margin: 3px;" (click)="openToUpdate(updateModal)"
+            >Edit</button>
+    
+            <button class="btn btn-danger" >Delete</button>
+          </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="d-flex justify-content-between p-2">
+        <!-- <ngb-pagination
+            [collectionSize]="collectionSize"
+            [(page)]="page"
+            [pageSize]="pageSize"
+            (pageChange)="refreshCountries()"
+        >
+        </ngb-pagination> -->
+    
+        <!-- <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+            <option [ngValue]="2">2 items per page</option>
+            <option [ngValue]="4">4 items per page</option>
+            <option [ngValue]="6">6 items per page</option>
+        </select> -->
+    </div>
+    </div>
+    
+    
+    <ng-template #postModal let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Add new Spareparts</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <form class="needs-validation" novalidate >
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom01">Spareparts</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Sparepart name" required formControlName="Sparepart name">
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Location</label>
+                    <input type="text" class="form-control" id="validationCustom02" placeholder="Location" required 
+                    formControlName="Location" >
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationCustomUsername">Price</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                      </div>
+                      <input type="text" class="form-control" id="validationMotorVehicleYear" placeholder="Price" aria-describedby="inputGroupPrepend" required formControlName="Price">
+                      <div class="invalid-feedback">
+                        Please choose a username.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                  <div class="form-row">
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom01">Part description</label>
+                      <input type="text" class="form-control" id="selleremail" placeholder="Part description" required formControlName="Part description">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom02">MotorVehicle model</label>
+                      <input type="text" class="form-control" id="sellerpassword" placeholder="MotorVehicle model"  required formControlName="MotorVehicle model
+                      ">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustomUsername">MotorVehicle make</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="sellerphonenumber" placeholder="MotorVehicle make" aria-describedby="inputGroupPrepend" required formControlName="MotorVehicle make">
+                        <div class="invalid-feedback">
+                          Please choose a username.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 
+                 
+                </form>
+              
+        </div>
+        <div class="modal-footer">
+        </div>
+    </ng-template>
+    
+    
+    <!-- ya update -->
+    <ng-template #updateModal let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Update Spareparts</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+          <form class="needs-validation" novalidate >
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Spareparts</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Sparepart name" required formControlName="Sparepart name">
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Location</label>
+                <input type="text" class="form-control" id="validationCustom02" placeholder="Location" required 
+                formControlName="Location" >
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationCustomUsername">Price</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                  </div>
+                  <input type="text" class="form-control" id="validationMotorVehicleYear" placeholder="Price" aria-describedby="inputGroupPrepend" required formControlName="Price">
+                  <div class="invalid-feedback">
+                    Please choose a username.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom01">Part description</label>
+                  <input type="text" class="form-control" id="selleremail" placeholder="Part description" required formControlName="Part description">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom02">VotorVehicle model</label>
+                  <input type="text" class="form-control" id="sellerpassword" placeholder="MotorVehicle model"  required formControlName="MotorVehicle model
+                  ">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustomUsername">MotorVehicle make</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="sellerphonenumber" placeholder="MotorVehicle make" aria-describedby="inputGroupPrepend" required formControlName="MotorVehicle make">
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+             
+            </form>
+          
+        </div>s
+        <div class="modal-footer">
+        </div>
+    </ng-template>
+    
+    
+

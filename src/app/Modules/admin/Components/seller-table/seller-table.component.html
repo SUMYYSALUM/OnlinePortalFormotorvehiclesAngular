@@ -1,0 +1,256 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-10">
+        <h1>Sellers</h1>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-secondary" (click)="open(content)" >Add Seller</button>
+    </div>
+</div>    
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Name</th>
+			<th scope="col">username</th>
+			<th scope="col">Email</th>
+     <th scope="col">Phone number</th>
+			<th scope="col">Region</th>
+      <th scope="col">District</th>
+			<th scope="col">Ward</th>
+      <th scope="col">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor=" let x of seller, let y = index">
+			<td>{{y+1}}</td>
+			<td>{{x.firstName}} {{x.lastName}}</td>
+			<td>{{x.username}}</td>
+      <td>{{x.email}}</td>
+			<td>{{x.phonenumber}}</td>
+      <td>{{x.ward}}</td>
+     <td>{{x.district}}</td>
+      <td>{{x.region}}</td>
+      <td>
+        <button class="btn btn-success" style="margin: 3px;" (click)="openUpdate(Update)"
+        (click)="editSeller(x)">Edit</button>
+
+        <button class="btn btn-danger" (click)=" DeletSeller(x.sellerId)">Delete</button>
+      </td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+	<!-- <ngb-pagination
+		[collectionSize]="collectionSize"
+		[(page)]="page"
+		[pageSize]="pageSize"
+		(pageChange)="refreshCountries()"
+	>
+	</ngb-pagination> -->
+
+	<!-- <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+		<option [ngValue]="2">2 items per page</option>
+		<option [ngValue]="4">4 items per page</option>
+		<option [ngValue]="6">6 items per page</option>
+	</select> -->
+</div>
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Add new seller</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form class="needs-validation" novalidate [formGroup]="Sellersform" (ngSubmit)="newSeller()" >
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom01">First Name</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required formControlName="firstName">
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Last Name</label>
+                <input type="text" class="form-control" id="validationCustom02" placeholder="Last Name" required 
+                formControlName="lastName" >
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationCustomUsername">Username</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                  </div>
+                  <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required formControlName="username">
+                  <div class="invalid-feedback">
+                    Please choose a username.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom01">Email</label>
+                  <input type="text" class="form-control" id="selleremail" placeholder="Email" required formControlName="email">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom02">Password</label>
+                  <input type="password" class="form-control" id="sellerpassword" placeholder="Password"  required formControlName="password">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustomUsername">Phone number</label>
+                  <div class="input-group">
+                    <!-- <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div> -->
+                    <input type="number" class="form-control" id="sellerphonenumber" placeholder="phone number" aria-describedby="inputGroupPrepend" required formControlName="phonenumber">
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Region</label>
+                <input type="text" class="form-control" id="sellerregion" placeholder="Address" required formControlName="region">
+                <div class="invalid-feedback">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="validationCustom04">District</label>
+                <input type="text" class="form-control" id="sellerdistrict" placeholder="District" required formControlName="district">
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="validationCustom05">Ward</label>
+                <input type="text" class="form-control" id="sellersward" placeholder="Ward" required formControlName="ward">
+                <div class="invalid-feedback">
+                  Please provide a valid zip.
+                </div>
+              </div>
+            </div>
+            
+            <button class="btn btn-secondary" type="submit" (click)="c('Save click')">Submit</button>
+          </form>
+          
+	</div>
+	<div class="modal-footer">
+	</div>
+</ng-template>
+
+
+<!-- ya update -->
+<ng-template #Update let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Update seller</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="updateSellersform" (ngSubmit)="updateSeller()" class="needs-validation" novalidate>
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom01">First Name</label>
+                <input type="text" class="form-control" id="validationCustom01" placeholder="First name" required formControlName="firstName" name="firstName">
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Last Name</label>
+                <input type="text" class="form-control" id="validationCustom02" placeholder="Last Name" required 
+                formControlName="lastName" name="lastn
+                " >
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationCustomUsername">Username</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                  </div>
+                  <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required formControlName="username" name="username">
+                  <div class="invalid-feedback">
+                    Please choose a username.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom01">Email</label>
+                  <input type="text" class="form-control" id="selleremail" placeholder="Email" required formControlName="email" name="email">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom02">Password</label>
+                  <input type="password" class="form-control" id="sellerpassword" placeholder="Password"  required formControlName="password" name="Password">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustomUsername">Phone number</label>
+                  <div class="input-group">
+                    
+                    <input type="number" class="form-control" id="sellerphonenumber" placeholder="phone number" aria-describedby="inputGroupPrepend" required formControlName="phonenumber" name="phonenumber">
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="validationCustom03">Region</label>
+                <input type="text" class="form-control" id="sellerregion" placeholder="Address" required formControlName="region" name="regi
+                ">
+                <div class="invalid-feedback">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="validationCustom04">District</label>
+                <input type="text" class="form-control" id="sellerdistrict" placeholder="District" required formControlName="district" name="district">
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="validationCustom05">Ward</label>
+                <input type="text" class="form-control" id="sellersward" placeholder="Ward" required formControlName="ward" name="ward
+                ">
+                <div class="invalid-feedback">
+                  Please provide a valid zip.
+                </div>
+              </div>
+            </div>
+            
+            <button class="btn btn-secondary" type="submit" (click)="c('Save click')">Update</button>
+          </form>
+          
+	</div>
+	<div class="modal-footer">
+	</div>
+</ng-template>
+
