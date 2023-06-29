@@ -11,6 +11,7 @@ import { CustomerPendingOrdersComponent } from './Components/customer-pending-or
 import { CustomerApprovedOrdersComponent } from './Components/customer-approved-orders/customer-approved-orders.component';
 import { CustomerSpareListingsComponent } from './Components/customer-spare-listings/customer-spare-listings.component';
 import { CustomerMotorsListingsComponent } from './Components/customer-motors-listings/customer-motors-listings.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,9 @@ import { CustomerMotorsListingsComponent } from './Components/customer-motors-li
   ],
   imports: [
     CommonModule,
-    CustomerRoutingModule
+    CustomerRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CustomerModule { }

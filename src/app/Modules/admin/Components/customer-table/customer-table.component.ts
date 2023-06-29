@@ -53,8 +53,8 @@ export class CustomerTableComponent {
 
 
 
-	constructor(config: NgbModalConfig, private modalService: NgbModal,
-		private customerService:CustomerService) {
+	constructor(private customerService:CustomerService,
+		config: NgbModalConfig, private modalService: NgbModal) {
 		// customize default values of modals used by this component tree
 		config.backdrop = 'static';
 		config.keyboard = false;
@@ -67,6 +67,11 @@ export class CustomerTableComponent {
 	openToUpdate(updateModal:any) {
 		this.modalService.open(updateModal,{size:'lg'});
 	}
+
+	openToDelete(deleteModal:any) {
+		this.modalService.open(deleteModal,{size:'sm'});
+	}
+
 	public getcustomer(){
 		this.customerService.getcustomer().subscribe(data =>
 			{

@@ -26,6 +26,9 @@ export class SellerServicesService {
   Deleteseller(id:number){
     return this.http.delete(`${url}/${id}`)
   }
+  CountSellers(){
+    return this.http.get(`${url}/count`)
+  }
 
 
 

@@ -83,6 +83,9 @@ updateSellersform:FormGroup=new FormGroup({
 	openUpdate(Update:any) {
 		this.modalService.open(Update,{size:'lg'});
 	}
+	openToDelete(deleteModal:any) {
+		this.modalService.open(deleteModal,{size:'sm'});
+	}
 
 	public DeletSeller(id:number){
 		this.sellerService.Deleteseller(id).subscribe(

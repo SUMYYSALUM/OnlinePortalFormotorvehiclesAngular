@@ -2,45 +2,69 @@
     <input type="checkbox" id="check">
     <div class="login form">
       <header>Customer Register</header>
-      <form>
+      <form [formGroup]="registerForm" >
         <div class="row">
-            <div class="col-md-6">
-                <input type="text" placeholder="Enter First name">
+            <div class="col-md-4">
+                <small *ngIf="registerForm.get('firstname')?.hasError('required')" style="color: red;">Firstname is required*</small>
+                <input type="text" placeholder="Enter First name" formControlName="firstname">
+              </div>
+              
+              
+            <div class="col-md-4">
+                <small *ngIf="registerForm.get('lastname')?.hasError('required') " style="color: red;">Lastname is required*</small>
+                <input type="text" placeholder="Enter Last name" formControlName="lastname" >   
+
             </div>
-            <div class="col-md-6">
-                <input type="password" placeholder="Enter Last name">   
+            <div class="col-md-4">
+                <small *ngIf="registerForm.get('username')?.hasError('required') " style="color: red;">Username is required*</small>
+                <input type="text" placeholder="Enter username" formControlName="username" >   
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-                <input type="text" placeholder="Enter your email">
-            </div>
+                <small *ngIf="registerForm.get('email')?.hasError('required')" style="color: red;">Email is required*</small>
+                <small *ngIf="registerForm.get('email')?.hasError('email')" style="color: red;">Enter a valid email address</small>
+                <input type="text" placeholder="Enter your email" formControlName="email">
+              </div>
+              
+
             <div class="col-md-6">
-                <input type="password" placeholder="Enter your phone number">   
+                <small *ngIf="registerForm.get('phonenumber')?.hasError('required')" style="color: red;">Phonenumber is required*</small>               
+                <input type="text" placeholder="Enter your phone number" formControlName="phonenumber" >   
             </div>
         </div>
         <div class="row">
             <div class="col-md-5">
-                <input type="text" placeholder="Enter your region">
+                <small *ngIf="registerForm.get('region')?.hasError('required')" style="color: red;">Region is required*</small>
+                <input type="text" placeholder="Enter your region" formControlName="region" >
             </div>
             <div class="col-md-4">
-                <input type="text" placeholder="Enter your district">   
+                <small *ngIf="registerForm.get('district')?.hasError('required')" style="color: red;">District is required*</small>
+                <input type="text" placeholder="Enter your district" formControlName="district" >   
             </div>
             <div class="col-md-3">
-                <input type="text" placeholder="Enter your ward">   
+                <small *ngIf="registerForm.get('ward')?.hasError('required')" style="color: red;">Ward is required*</small>
+                <input type="text" placeholder="Enter your ward" formControlName="ward" >   
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <input type="text" placeholder="Enter your password">
+                <small *ngIf="registerForm.get('password')?.hasError('required')" style="color: red;">Password is required*</small>
+                <small *ngIf="registerForm.get('password')?.hasError('minlength')" style="color: red;">Password should be 8 characters minimum </small>
+                <small *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('password')?.dirty" style="color: red;">Passwords do not match</small>
+              <input type="password" placeholder="Enter your password" formControlName="password">
             </div>
             <div class="col-md-6">
-                <input type="password" placeholder="confirm your password">   
+                <small *ngIf="registerForm.get('confirmpassword')?.hasError('required')" style="color: red;">Password corfirmation is required*</small>
+                <small *ngIf="registerForm.get('confirmpassword')?.hasError('minlength')" style="color: red;">Password should be 8 characters minimum </small>
+                <small *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('password')?.dirty" style="color: red;">Passwords do not match</small>
+              <input type="password" placeholder="Confirm your password" formControlName="confirmpassword">
             </div>
-        </div>
-        <input type="button" class="btn btn-secondary" value="Register" [routerLink]="['../']">
-      </form>
+          </div>
+          
+        <input type="button" class="btn btn-secondary" value="Register" (click)="registerForm.valid && registerCustomer()">      
+    </form>
       
   </div>
 

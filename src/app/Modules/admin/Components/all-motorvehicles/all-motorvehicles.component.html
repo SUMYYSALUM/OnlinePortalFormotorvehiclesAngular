@@ -12,37 +12,54 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Make</th>
-                <th scope="col">Model</th>
                 <th scope="col">Year</th>
                 <th scope="col">Mileage</th>
-                <th scope="col">Price</th>
-                <th scope="col">Condition</th>
-                <th scope="col">Transmission Type</th>
+                <th scope="col">Transmission</th>
                 <th scope="col">Fuel type</th>
-                <th scope="col">Exterior color</th>
-                <th scope="col">Interior color</th>
-                <th scope="col">Vehicle identification number</th>
+                <th scope="col">Ext-Color</th>
+                <th scope="col">Int-Color</th>
+                <th scope="col">Identification</th>
+                <th scope="col">Condition</th>
+                <th scope="col">Price</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Make </td>
-                <td>Model</td>
-                <td>Year</td>
-                <td>Mileage</td>
-                <td>Price</td>
-                <td>Condition</td>
-                <td>TransmissionType</td>
-                <td>FuelType</td>
-                <td>ExteriorColor</td>
-                <td>InteriorColor</td>
-                <td>VehicleIdentificationNumber</td>
+            <tr *ngFor="let x of Motors; let y=index">
+                <td>{{y+1}}</td>
+                <td>{{x.motorMake}}</td>
+                <td>{{x.releaseYear}}</td>
+                <td>{{x.motorMileage}}</td>
+                <td>{{x.transmissiontype}}</td>
+                <td>{{x.fueltype}}</td>
+                <td>{{x.extiriorcolor}}</td>
+                <td>{{x.interiorcolor}}</td>
+                <td>{{x.identificationnumber}}</td>
+                <td>{{x.motorCondition}}</td>
+                <td>{{x.motorPrice}}</td>
+
+
           <td>
             <button class="btn btn-success" style="margin: 3px;" 
             >Edit</button>
     
-            <button class="btn btn-danger" >Delete</button>
+            <button class="btn btn-danger" (click)="openToDelete(deleteModal)" >Delete</button>
+          <ng-template #deleteModal let-c="close" let-d="dismiss">
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Deleting Motorvehicle</h4>
+              <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure to delete?</p>
+             
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-danger" (click)="deleteMotor(x.motorvehicleId)" (click)="c('Save click')" > Yes </button>
+              <button class="btn btn-primary" (click)="c('Save click')" > No </button>
+
+            </div>
+
+          </ng-template>
           </td>
             </tr>
         </tbody>

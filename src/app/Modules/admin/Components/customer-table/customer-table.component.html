@@ -31,12 +31,30 @@
         <td>{{x.ward}}</td>
        <td>{{x.district}}</td>
         <td>{{x.region}}</td>
+
         <td>
           <button class="btn btn-success" style="margin: 3px;" (click)="openToUpdate(updateModal)"
           (click)="editCustomer(x)">Edit</button>
   
-          <button class="btn btn-danger" (click)=" DeletCustomer(x.customerId)">Delete</button>
+          <button class="btn btn-danger" (click)="openToDelete(deleteModal)" >Delete</button>
+        <ng-template #deleteModal let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Deleting Customer</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure to delete?</p>
+           
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" (click)=" DeletCustomer(x.customerId)" (click)="c('Save click')" > Yes </button>
+            <button class="btn btn-primary" (click)="c('Save click')" > No </button>
+
+          </div>
+
+        </ng-template>
         </td>
+        
       </tr>
     </tbody>
   </table>

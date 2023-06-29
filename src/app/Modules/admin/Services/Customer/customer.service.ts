@@ -26,5 +26,8 @@ export class CustomerService {
   Deletecustomer(id:number){
     return this.http.delete(`${url}/${id}`)
   }
+  CountCustomers(){
+    return this.http.get(`${url}/count`)
+  }
 
 }
