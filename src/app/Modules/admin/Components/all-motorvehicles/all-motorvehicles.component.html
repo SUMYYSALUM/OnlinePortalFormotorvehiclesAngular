@@ -11,8 +11,8 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Make</th>
-                <th scope="col">Year</th>
+                <th scope="col">Release Year</th>
+                <th scope="col">Made</th>
                 <th scope="col">Mileage</th>
                 <th scope="col">Transmission</th>
                 <th scope="col">Fuel type</th>
@@ -27,14 +27,14 @@
         <tbody>
             <tr *ngFor="let x of Motors; let y=index">
                 <td>{{y+1}}</td>
-                <td>{{x.motorMake}}</td>
                 <td>{{x.releaseYear}}</td>
+                <td>{{x.motorMade}}</td>
                 <td>{{x.motorMileage}}</td>
-                <td>{{x.transmissiontype}}</td>
-                <td>{{x.fueltype}}</td>
-                <td>{{x.extiriorcolor}}</td>
-                <td>{{x.interiorcolor}}</td>
-                <td>{{x.identificationnumber}}</td>
+                <td>{{x.transmissionType}}</td>
+                <td>{{x.fuelType}}</td>
+                <td>{{x.exteriorColor}}</td>
+                <td>{{x.interiorColor}}</td>
+                <td>{{x.identification}}</td>
                 <td>{{x.motorCondition}}</td>
                 <td>{{x.motorPrice}}</td>
 

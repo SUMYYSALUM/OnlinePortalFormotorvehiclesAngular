@@ -2,7 +2,7 @@
     <input type="checkbox" id="check">
     <div class="login form">
       <header>Customer Register</header>
-      <form [formGroup]="registerForm" >
+      <form [formGroup]="registerForm">
         <div class="row">
             <div class="col-md-4">
                 <small *ngIf="registerForm.get('firstname')?.hasError('required')" style="color: red;">Firstname is required*</small>

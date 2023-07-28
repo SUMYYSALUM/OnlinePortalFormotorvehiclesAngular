@@ -12,6 +12,7 @@ import { SellerProfileComponent } from './Components/seller-profile/seller-profi
 import { SellerHomeComponent } from './Components/seller-home/seller-home.component';
 import { SellerPendingOrderComponent } from './Components/seller-pending-order/seller-pending-order.component';
 import { SellerAprovedOrderComponent } from './Components/seller-aproved-order/seller-aproved-order.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import { SellerAprovedOrderComponent } from './Components/seller-aproved-order/s
   ],
   imports: [
     CommonModule,
-    SellerRoutingModule
+    SellerRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SellerModule { }

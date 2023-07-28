@@ -7,46 +7,52 @@
                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                   alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-                <h5>Kihalfansss</h5>
-                <p>Web Designer</p>
+                <h5>{{profile.firstName}} {{profile.lastName}}</h5>
+                <p>Seller</p>
                 <i class="far fa-edit mb-5"></i>
               </div>
               <div class="col-md-8">
                 <div class="card-body p-4">
-                  <h6>Information</h6>
+                  <div class="row">
+                    <div class="col-md-6">
+                  <h6>Personal Information</h6>
+                    </div>
+                    <div class="col-md-6">
+                  <button class="btn btn-secondary" style="float: right;"
+                  (click)="openToUpdate(updateModal)" >Update</button>
+                    </div>
+                  </div> <br>
                   <hr class="mt-0 mb-4">
                   <div class="row pt-1">
                     <div class="col-6 mb-3">
                       <h6>Firstname</h6>
-                      <p class="text-muted">Samira</p>
+                      <p class="text-muted">{{profile.firstName}}</p>
                     </div>
                     <div class="col-6 mb-3">
                       <h6>Lastname</h6>
-                      <p class="text-muted">Said</p>
+                      <p class="text-muted">{{profile.lastName}}</p>
                     </div>
                   </div>
                   <div class="row pt-1">
                     <div class="col-6 mb-3">
                       <h6>Username</h6>
-                      <p class="text-muted">Charm</p>
+                      <p class="text-muted">{{profile.username}}</p>
                     </div>
                     <div class="col-6 mb-3">
                       <h6>Email</h6>
-                      <p class="text-muted">charm@gmail.com</p>
+                      <p class="text-muted">{{profile.email}}</p>
                     </div>
                   </div>
                   <div class="row pt-1">
                     <div class="col-6 mb-3">
                       <h6>Address</h6>
-                      <p class="text-muted">Kijichi</p>
+                      <p class="text-muted">{{profile.ward}}, {{profile.region}}, {{profile.district}}</p>
                     </div>
                     <div class="col-6 mb-3">
                       <h6>Phone number</h6>
-                      <p class="text-muted">123 456 789</p>
+                      <p class="text-muted">{{profile.phonenumber}}</p>
                     </div>
                   </div>
-                  
-                  
                 </div>
               </div>
             </div>
@@ -54,3 +60,119 @@
         </div>
       </div>
     </div>
+
+
+    <!-- modal ya kuupdate profile  -->
+<ng-template #updateModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Profile</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form class="needs-validation" novalidate >
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom01">First name</label>
+          <input type="text" class="form-control" placeholder="First name"
+            formControlName="firstname" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom02">Last name</label>
+          <input type="text" class="form-control" placeholder="Last name"
+            formControlName="lastname" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom03">Phone Number</label>
+          <input type="text" class="form-control" id="phone" placeholder="Phone number" formControlName="phonenumber"
+            name="region" required>
+          <div class="invalid-feedback">
+            Please provide a valid phone number.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom03">Region</label>
+          <input type="text" class="form-control" id="region" placeholder="Region" formControlName="region"
+            name="Region" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div> 
+        
+      </div>
+
+      
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom03">District</label>
+          <input type="text" class="form-control" id="district" placeholder="District" formControlName="district"
+            name="district" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom03">Ward</label>
+          <input type="text" class="form-control" id="ward" placeholder="Ward" formControlName="ward"
+            name="ward" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div> 
+        
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom03">Old Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Old Password" formControlName="oldpassword"
+            name="oldpassword" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="validationCustom03">New Password</label>
+          <input type="password" class="form-control" id="newpassword" placeholder="New Password" formControlName="password"
+            name="newpassword" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div> 
+        
+      </div>
+
+
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom03">Profile Picture</label>
+          <input type="file" class="form-control" id="profilepic" placeholder="Old Password" formControlName="adminprofile"
+            name="profilepic" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        
+      </div>
+
+
+
+
+      <button class="btn btn-secondary" type="submit" (click)="c('Save click')">Update</button>
+    </form>
+
+
+  </div>
+ 
+</ng-template>
+
+

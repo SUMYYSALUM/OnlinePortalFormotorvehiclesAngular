@@ -33,43 +33,47 @@
     </div>   
     
     </div>
+<ng-template #viewModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">All vehicle Informations</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="card">
+      <img src="../../../../../assets/img/thumbnail.jpg" class="card-img-top" alt="Card Image">
+      <div class="card-body">
+        <h5 class="card-title">Vehicle Information</h5>
+        <div class="row">
+          <div class="col-sm-6">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Make: Make</li>
+              <li class="list-group-item">Model: Model</li>
+              <li class="list-group-item">Year: Year</li>
+              <li class="list-group-item">Mileage: Mileage</li>
+              <li class="list-group-item">Price: Price</li>
+              <li class="list-group-item">Condition: Condition</li>
+            </ul>
 
-    <ng-template #viewModal let-c="close" let-d="dismiss">
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">All vehicle Informations</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-      </div>
-      <div class="modal-body">
-        <div class="card">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img src="../../../../../assets/img/thumbnail.jpg" class="card-img" alt="Card Image">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Vehicle Information</h5>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Make: Make</li>
-                  <li class="list-group-item">Model: Model</li>
-                  <li class="list-group-item">Year: Year</li>
-                  <li class="list-group-item">Mileage: Mileage</li>
-                  <li class="list-group-item">Price: Price</li>
-                  <li class="list-group-item">Condition: Condition</li>
-                  <li class="list-group-item">Transmission Type: TransmissionType</li>
-                  <li class="list-group-item">Fuel Type: FuelType</li>
-                  <li class="list-group-item">Exterior Color: ExteriorColor</li>
-                  <li class="list-group-item">Interior Color: InteriorColor</li>
-                  <li class="list-group-item">Vehicle Identification Number: VehicleIdentificationNumber</li>
-                </ul>
-                <div class="card-footer">
-                  <button class="btn btn-primary">Make Order</button>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div class="col-sm-6">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Transmission Type: TransmissionType</li>
+              <li class="list-group-item">Fuel Type: FuelType</li>
+              <li class="list-group-item">Exterior Color: ExteriorColor</li>
+              <li class="list-group-item">Interior Color: InteriorColor</li>
+              <li class="list-group-item">Vehicle Identification Number: VehicleIdentificationNumber</li>
+            </ul>
+
           </div>
         </div>
+        <div class="card-footer">
+          <button class="btn btn-primary">Make Order</button>
+        </div>
       </div>
-    </ng-template>
+    </div>
+  </div>
+</ng-template>
+
     
   
     

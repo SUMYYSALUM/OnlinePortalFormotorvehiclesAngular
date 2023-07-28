@@ -60,21 +60,6 @@
 	</tbody>
 </table>
 
-<div class="d-flex justify-content-between p-2">
-	<!-- <ngb-pagination
-		[collectionSize]="collectionSize"
-		[(page)]="page"
-		[pageSize]="pageSize"
-		(pageChange)="refreshCountries()"
-	>
-	</ngb-pagination> -->
-
-	<!-- <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
-		<option [ngValue]="2">2 items per page</option>
-		<option [ngValue]="4">4 items per page</option>
-		<option [ngValue]="6">6 items per page</option>
-	</select> -->
-</div>
 </div>
 
 
@@ -102,66 +87,69 @@
                 </div>
               </div>
               <div class="col-md-4 mb-3">
-                <label for="validationCustomUsername">Username</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                  </div>
-                  <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required formControlName="username">
-                  <div class="invalid-feedback">
-                    Please choose a username.
-                  </div>
+                <label for="validationCustom02">Username</label>
+                <input type="text" class="form-control" id="validationCustom02" placeholder="Username" required 
+                formControlName="username" >
+                <div class="valid-feedback">
+                  Looks good!
                 </div>
               </div>
             </div>
             <div class="form-row">
-                <div class="col-md-4 mb-3">
+                <div class="col-md-6 mb-3">
                   <label for="validationCustom01">Email</label>
                   <input type="text" class="form-control" id="selleremail" placeholder="Email" required formControlName="email">
                   <div class="valid-feedback">
                     Looks good!
                   </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationCustom02">Password</label>
-                  <input type="password" class="form-control" id="sellerpassword" placeholder="Password"  required formControlName="password">
+               
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom01">Phone Number</label>
+                  <input type="text" class="form-control" id="sellerphone" placeholder="Phone Number" formControlName="phonenumber">
                   <div class="valid-feedback">
                     Looks good!
                   </div>
                 </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationCustomUsername">Phone number</label>
-                  <div class="input-group">
-                    <!-- <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupPrepend">@</span>
-                    </div> -->
-                    <input type="number" class="form-control" id="sellerphonenumber" placeholder="phone number" aria-describedby="inputGroupPrepend" required formControlName="phonenumber">
-                    <div class="invalid-feedback">
-                      Please choose a username.
-                    </div>
-                  </div>
-                </div>
               </div>
             <div class="form-row">
-              <div class="col-md-6 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="validationCustom03">Region</label>
                 <input type="text" class="form-control" id="sellerregion" placeholder="Region" required formControlName="region">
                 <div class="invalid-feedback">
                   Please provide a valid city.
                 </div>
               </div>
-              <div class="col-md-3 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="validationCustom04">District</label>
                 <input type="text" class="form-control" id="sellerdistrict" placeholder="District" required formControlName="district">
                 <div class="invalid-feedback">
                   Please provide a valid state.
                 </div>
               </div>
-              <div class="col-md-3 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="validationCustom05">Ward</label>
                 <input type="text" class="form-control" id="sellersward" placeholder="Ward" required formControlName="ward">
                 <div class="invalid-feedback">
                   Please provide a valid zip.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="validationCustom02">Password</label>
+                <input type="password" class="form-control" id="sellerpassword" placeholder="Password"  required formControlName="password">
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="validationCustom02">Confirm Password</label>
+                <input type="password" class="form-control" id="sellerpassword" placeholder="Password"  required formControlName="password">
+                <div class="valid-feedback">
+                  Looks good!
                 </div>
               </div>
             </div>
@@ -182,7 +170,7 @@
 		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-		<form [formGroup]="updateSellersform" (ngSubmit)="updateSeller()" class="needs-validation" novalidate>
+		<form [formGroup]="updateSellersform" class="needs-validation" novalidate>
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom01">First Name</label>
@@ -200,47 +188,22 @@
                   Looks good!
                 </div>
               </div>
+
               <div class="col-md-4 mb-3">
-                <label for="validationCustomUsername">Username</label>
+                <label for="validationCustomUsername">Phone number</label>
                 <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                  </div>
-                  <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required formControlName="username" name="username">
+                  
+                  <input type="number" class="form-control" id="sellerphonenumber" placeholder="phone number" aria-describedby="inputGroupPrepend" required formControlName="phonenumber" name="phonenumber">
                   <div class="invalid-feedback">
                     Please choose a username.
                   </div>
                 </div>
               </div>
+              
             </div>
+            
             <div class="form-row">
-                <div class="col-md-4 mb-3">
-                  <label for="validationCustom01">Email</label>
-                  <input type="text" class="form-control" id="selleremail" placeholder="Email" required formControlName="email" name="email">
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationCustom02">Password</label>
-                  <input type="password" class="form-control" id="sellerpassword" placeholder="Password"  required formControlName="password" name="Password">
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationCustomUsername">Phone number</label>
-                  <div class="input-group">
-                    
-                    <input type="number" class="form-control" id="sellerphonenumber" placeholder="phone number" aria-describedby="inputGroupPrepend" required formControlName="phonenumber" name="phonenumber">
-                    <div class="invalid-feedback">
-                      Please choose a username.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="validationCustom03">Region</label>
                 <input type="text" class="form-control" id="sellerregion" placeholder="Address" required formControlName="region" name="regi
                 ">
@@ -248,14 +211,14 @@
                   Please provide a valid city.
                 </div>
               </div>
-              <div class="col-md-3 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="validationCustom04">District</label>
                 <input type="text" class="form-control" id="sellerdistrict" placeholder="District" required formControlName="district" name="district">
                 <div class="invalid-feedback">
                   Please provide a valid state.
                 </div>
               </div>
-              <div class="col-md-3 mb-3">
+              <div class="col-md-4 mb-3">
                 <label for="validationCustom05">Ward</label>
                 <input type="text" class="form-control" id="sellersward" placeholder="Ward" required formControlName="ward" name="ward
                 ">
@@ -264,8 +227,55 @@
                 </div>
               </div>
             </div>
+
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Old Password</label>
+                <div class="input-group">
+                  <input type="{{ showOldPassword ? 'text' : 'password' }}" class="form-control" id="oldpassword" placeholder="Old Password" formControlName="oldPassword" name="oldpassword">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="toggleOldPasswordVisibility()">
+                      <i class="fa" [ngClass]="showOldPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                    </button>
+                  </div>
+                </div>
+                <div *ngIf="invalidOldPassword" class="text-danger">Invalid old password.</div>
+              </div>
+              
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom02">New Password</label>
+                <div class="input-group">
+                  <input type="{{ showNewPassword ? 'text' : 'password' }}" class="form-control" id="sellerpassword" placeholder="New Password" formControlName="password" name="Password">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="toggleNewPasswordVisibility()">
+                      <i class="fa" [ngClass]="showNewPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              
+              <div class="col-md-4 mb-3">
+                <label for="validationCustom03">Confirm Password</label>
+                <div class="input-group">
+                  <input type="{{ showConfirmPassword ? 'text' : 'password' }}" class="form-control" id="confirmpassword" placeholder="Confirm Password" formControlName="confirmPassword" name="confirmPassword">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" (click)="toggleConfirmPasswordVisibility()">
+                      <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              
+              
+            </div>
             
-            <button class="btn btn-secondary" type="submit" (click)="c('Save click')">Update</button>
+            <button class="btn btn-secondary" type="submit" (click)="updateSeller()">Update</button>
           </form>
           
 	</div>

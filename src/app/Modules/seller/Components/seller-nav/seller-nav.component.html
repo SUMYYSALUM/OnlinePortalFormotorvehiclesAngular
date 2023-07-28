@@ -14,7 +14,7 @@
           <li><a [routerLink]="['pending-order']">Pending Orders</a></li>
           <li><a [routerLink]="['approved-order']">Approved Orders</a></li>
           <li><a [routerLink]="['seller-profile']">Profile</a></li>
-          <li><a [routerLink]="['../']" >Log out</a></li>
+          <li><a (click)="logout()" >Log out</a></li>
         </ul>
       </nav>
       <div class="content">

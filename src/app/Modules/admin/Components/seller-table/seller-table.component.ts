@@ -10,12 +10,45 @@ import { Seller } from '../../Services/Seller/Seller';
   styleUrls: ['./seller-table.component.css']
 })
 export class SellerTableComponent {
-seller!: Seller[];
 
-	page = 1;
-	pageSize = 4;
-	// collectionSize = COUNTRIES.length;
-	// countries: Country[];
+	constructor(config: NgbModalConfig, private modalService: NgbModal,
+		private sellerService:SellerServicesService ) {
+		// customize default values of modals used by this component tree
+		config.backdrop = 'static';
+		config.keyboard = false;
+	}
+
+	ngOnInit(): void {
+		this.getseller(); 
+	}
+
+	// function ya kuwaona sellers
+seller!: Seller[];
+public getseller(){
+	this.sellerService.getseller().subscribe(data =>{
+		this.seller=data
+		console.log(data)
+	})
+}
+
+// show or hide old password
+showOldPassword: boolean = false;
+toggleOldPasswordVisibility(): void {
+	this.showOldPassword = !this.showOldPassword;
+  }
+
+  // show or hide new password
+showNewPassword: boolean = false;
+toggleNewPasswordVisibility() {
+	this.showNewPassword = !this.showNewPassword;
+  }
+
+  // show or hide confirm password
+showConfirmPassword: boolean = false;
+toggleConfirmPasswordVisibility() {
+	this.showConfirmPassword = !this.showConfirmPassword;
+  }
+
 Sellersform:FormGroup=new FormGroup({
 	firstName: new FormControl('', [Validators.required]),
 	lastName: new FormControl('', [Validators.required]),
@@ -27,40 +60,10 @@ Sellersform:FormGroup=new FormGroup({
 	district:new FormControl('', [Validators.required]),
 	ward:new FormControl('', [Validators.required]),
 
-})
+});
 
-updateSellersform:FormGroup=new FormGroup({
-	sellerId: new FormControl('', [Validators.required]),
-	firstName: new FormControl('', [Validators.required]),
-	lastName: new FormControl('', [Validators.required]),
-	username: new FormControl('', [Validators.required]),
-    email:new FormControl('', [Validators.required]),
-	password:new FormControl('', [Validators.required]),
-	phonenumber:new FormControl('', [Validators.required]),
-	region:new FormControl('', [Validators.required]),
-	district:new FormControl('', [Validators.required]),
-	ward:new FormControl('', [Validators.required]),
-
-})
-
-	ngOnInit(): void {
-		this.getseller(); 
-	}
-
-	constructor(config: NgbModalConfig, private modalService: NgbModal,
-		private sellerService:SellerServicesService ) {
-		// customize default values of modals used by this component tree
-		config.backdrop = 'static';
-		config.keyboard = false;
-	}
-
-// function ya kuwaona sellers
-	public getseller(){
-		this.sellerService.getseller().subscribe(data =>
-			{
-			this.seller=data
-			console.log(data)
-		})
+	open(content:any) {
+		this.modalService.open(content,{size:'lg'});
 	}
 
 	public newSeller(){
@@ -76,13 +79,9 @@ updateSellersform:FormGroup=new FormGroup({
 		)
 	}
 
-	open(content:any) {
-		this.modalService.open(content,{size:'lg'});
-	}
+	
 
-	openUpdate(Update:any) {
-		this.modalService.open(Update,{size:'lg'});
-	}
+	
 	openToDelete(deleteModal:any) {
 		this.modalService.open(deleteModal,{size:'sm'});
 	}
@@ -99,32 +98,69 @@ updateSellersform:FormGroup=new FormGroup({
 		)
 	}
 
-	editSeller(seller:Seller){
+	openUpdate(Update:any) {
+		this.modalService.open(Update,{size:'lg'});
+	}
+
+
+	updateSellersform:FormGroup=new FormGroup({
+		sellerId: new FormControl('', [Validators.required]),
+		firstName: new FormControl('', [Validators.required]),
+		lastName: new FormControl('', [Validators.required]),
+		oldPassword:new FormControl('', [Validators.required]),
+		password:new FormControl('', [Validators.required]),
+		phonenumber:new FormControl('', [Validators.required]),
+		region:new FormControl('', [Validators.required]),
+		district:new FormControl('', [Validators.required]),
+		ward:new FormControl('', [Validators.required]),
+	
+	})
+	
+
+	
+	oldPassword!: String;
+	editSeller(seller: Seller) {
+		this.oldPassword = seller.password; // Store the old password in a separate variable
+	  
 		this.updateSellersform = new FormGroup({
-				sellerId: new FormControl(seller.sellerId, [Validators.required]),
-				firstName: new FormControl(seller.firstName, [Validators.required]),
-				lastName: new FormControl(seller.lastName, [Validators.required]),
-				username: new FormControl(seller.username, [Validators.required]),
-				email:new FormControl(seller.email, [Validators.required]),
-				password:new FormControl(seller.password, [Validators.required]),
-				phonenumber:new FormControl(seller.phonenumber, [Validators.required]),
-				region:new FormControl(seller.region, [Validators.required]),
-				district:new FormControl(seller.district, [Validators.required]),
-				ward:new FormControl(seller.ward, [Validators.required]),
+		  sellerId: new FormControl(seller.sellerId, [Validators.required]),
+		  firstName: new FormControl(seller.firstName, [Validators.required]),
+		  lastName: new FormControl(seller.lastName, [Validators.required]),
+		  oldPassword: new FormControl('', [Validators.required]), // Remove the value assignment for oldPassword
+		  password: new FormControl('', [Validators.required]),
+		  phonenumber: new FormControl(seller.phonenumber, [Validators.required]),
+		  region: new FormControl(seller.region, [Validators.required]),
+		  district: new FormControl(seller.district, [Validators.required]),
+		  ward: new FormControl(seller.ward, [Validators.required]),
+		});
+	  }
+	  
 
-		})
-	}
+	invalidOldPassword: boolean = false;
 
-	updateSeller(){
-		this.sellerService.Updateseller(this.updateSellersform.controls["sellerId"].value, 
-		this.updateSellersform.value).subscribe(response=>{
-			alert('Updated')
+
+	updateSeller() {
+		const enteredOldPassword = this.updateSellersform.controls['oldPassword'].value;
+		const sellerId = this.updateSellersform.controls['sellerId'].value;
+	
+		if (enteredOldPassword !== this.oldPassword) {
+		  this.invalidOldPassword = true;
+		  return;
+		}
+	
+		this.sellerService.Updateseller(sellerId, this.updateSellersform.value).subscribe(
+		  (response) => {
+			alert('Updated');
 			this.getseller();
-		},
-		(error)=>{
-			alert('Failed')
-		})
-	}
+			// Close the modal programmatically if the update was successful
+			this.modalService.dismissAll();
+			this.invalidOldPassword = false;
+		  },
+		  (error) => {
+			alert('Failed');
+		  }
+		);
+	  }  
 }
 
 

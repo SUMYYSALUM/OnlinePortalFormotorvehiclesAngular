@@ -11,29 +11,44 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Sparepart name</th>
-                <th scope="col">Location</th>
+                <th scope="col">Sparepart Name</th>
                 <th scope="col">Price</th>
-                <th scope="col">Part description</th>
-                <th scope="col">MotorVehicle model</th>
-                <th scope="col">MotorVehicle make</th>
+                <th scope="col">Part Description</th>
+                <th scope="col">Motorvehicle Model</th>
+                <th scope="col">Motorvehicle Make</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Sparepart name </td>
-                <td>Location</td>
-                <td>Price</td>
-                <td>Part description</td>
-                <td>Motorvehicle model</td>
-                <td>MotorVehicle make</td>
+            <tr *ngFor="let data of sparesList; let y=index">
+                <td>{{y+1}}</td>
+                <td>{{data.partName}}</td>
+                <td>{{data.price}}</td>
+                <td>{{data.partName}}</td>
+                <td>{{data.motorModel}}</td>
+                <td>{{data.motorMake}}</td>
           <td>
             <button class="btn btn-success" style="margin: 3px;" (click)="openToUpdate(updateModal)"
-            >Edit</button>
+           (click)="editSpare(data)" >Edit</button>
     
-            <button class="btn btn-danger" >Delete</button>
-          </td>
+            <button class="btn btn-danger" (click)="openToDelete(deleteModal)" >Delete</button>
+            <ng-template #deleteModal let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Deleting Sparepart</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure to delete?</p>
+               
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-danger" (click)="deleteSpare(data.partId)" (click)="c('Save click')" > Yes </button>
+                <button class="btn btn-primary" (click)="c('Save click')" > No </button>
+    
+              </div>
+    
+            </ng-template>
+            </td>
             </tr>
         </tbody>
     </table>
@@ -62,66 +77,63 @@
             <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
         </div>
         <div class="modal-body">
-            <form class="needs-validation" novalidate >
+            <form class="needs-validation" [formGroup]="SparePostForm" novalidate >
                 <div class="form-row">
                   <div class="col-md-4 mb-3">
-                    <label for="validationCustom01">Spareparts</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="Sparepart name" required formControlName="Sparepart name">
+                    <label for="validationCustom01">Spareparts Name</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Sparepart Name" required formControlName="partName">
                     <div class="valid-feedback">
                       Looks good!
                     </div>
                   </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="validationCustom02">Location</label>
-                    <input type="text" class="form-control" id="validationCustom02" placeholder="Location" required 
-                    formControlName="Location" >
+
+                  <div class="col-md-8 mb-3">
+                    <label for="validationCustom01">Part Description</label>
+                    <input type="text" class="form-control" id="selleremail" placeholder="Part Description" required formControlName="description">
                     <div class="valid-feedback">
                       Looks good!
                     </div>
                   </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="validationCustomUsername">Price</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                      </div>
-                      <input type="text" class="form-control" id="validationMotorVehicleYear" placeholder="Price" aria-describedby="inputGroupPrepend" required formControlName="Price">
-                      <div class="invalid-feedback">
-                        Please choose a username.
-                      </div>
+                  
+                  
                     </div>
-                  </div>
-                </div>
                 
                   <div class="form-row">
                     <div class="col-md-4 mb-3">
-                      <label for="validationCustom01">Part description</label>
-                      <input type="text" class="form-control" id="selleremail" placeholder="Part description" required formControlName="Part description">
-                      <div class="valid-feedback">
-                        Looks good!
-                      </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <label for="validationCustom02">MotorVehicle model</label>
-                      <input type="text" class="form-control" id="sellerpassword" placeholder="MotorVehicle model"  required formControlName="MotorVehicle model
-                      ">
-                      <div class="valid-feedback">
-                        Looks good!
-                      </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <label for="validationCustomUsername">MotorVehicle make</label>
+                      <label for="validationCustomUsername">Price</label>
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="inputGroupPrepend">@</span>
                         </div>
-                        <input type="text" class="form-control" id="sellerphonenumber" placeholder="MotorVehicle make" aria-describedby="inputGroupPrepend" required formControlName="MotorVehicle make">
+                        <input type="text" class="form-control" id="validationMotorVehicleYear" placeholder="Price" aria-describedby="inputGroupPrepend" required formControlName="price">
+                        <div class="invalid-feedback">
+                          Please choose a username.
+                        </div>
+                      </div>
+                    </div>
+                
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom02">Motorvehicle Model</label>
+                      <input type="text" class="form-control" id="sellerpassword" placeholder="Motorvehicle Model"  required formControlName="motorModel">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustomUsername">Motorvehicle Make</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="sellerphonenumber" placeholder="Motorvehicle Make" aria-describedby="inputGroupPrepend" required formControlName="motorMake">
                         <div class="invalid-feedback">
                           Please choose a username.
                         </div>
                       </div>
                     </div>
                   </div>
+
+                  <button class="btn btn-secondary" (click)="addSpare()" >Submit</button>
                  
                  
                 </form>
@@ -139,71 +151,71 @@
             <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
         </div>
         <div class="modal-body">
-          <form class="needs-validation" novalidate >
+          <form class="needs-validation" [formGroup]="SpareUpdateform" novalidate >
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Spareparts</label>
-                <input type="text" class="form-control" id="validationCustom01" placeholder="Sparepart name" required formControlName="Sparepart name">
+                <input type="text" class="form-control" id="validationCustom01" placeholder="Sparepart name" required formControlName="partName">
                 <div class="valid-feedback">
                   Looks good!
                 </div>
               </div>
-              <div class="col-md-4 mb-3">
-                <label for="validationCustom02">Location</label>
-                <input type="text" class="form-control" id="validationCustom02" placeholder="Location" required 
-                formControlName="Location" >
+
+              
+              <div class="col-md-8 mb-3">
+                <label for="validationCustom01">Part Description</label>
+                <input type="text" class="form-control" id="selleremail" placeholder="Part Description" required formControlName="description">
                 <div class="valid-feedback">
                   Looks good!
                 </div>
               </div>
-              <div class="col-md-4 mb-3">
-                <label for="validationCustomUsername">Price</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                  </div>
-                  <input type="text" class="form-control" id="validationMotorVehicleYear" placeholder="Price" aria-describedby="inputGroupPrepend" required formControlName="Price">
-                  <div class="invalid-feedback">
-                    Please choose a username.
-                  </div>
-                </div>
-              </div>
+             
+              
+
             </div>
             
               <div class="form-row">
+
                 <div class="col-md-4 mb-3">
-                  <label for="validationCustom01">Part description</label>
-                  <input type="text" class="form-control" id="selleremail" placeholder="Part description" required formControlName="Part description">
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationCustom02">VotorVehicle model</label>
-                  <input type="text" class="form-control" id="sellerpassword" placeholder="MotorVehicle model"  required formControlName="MotorVehicle model
-                  ">
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
-                </div>
-                <div class="col-md-4 mb-3">
-                  <label for="validationCustomUsername">MotorVehicle make</label>
+                  <label for="validationCustomUsername">Price</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend">@</span>
                     </div>
-                    <input type="text" class="form-control" id="sellerphonenumber" placeholder="MotorVehicle make" aria-describedby="inputGroupPrepend" required formControlName="MotorVehicle make">
+                    <input type="text" class="form-control" id="validationMotorVehicleYear" placeholder="Price" aria-describedby="inputGroupPrepend" required formControlName="price">
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom02">Motorvehicle Model</label>
+                  <input type="text" class="form-control" id="sellerpassword" placeholder="Motorvehicle Model"  required formControlName="motorModel">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustomUsername">Motorvehicle Make</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    </div>
+                    <input type="text" class="form-control" id="sellerphonenumber" placeholder="Motorvehicle Make" aria-describedby="inputGroupPrepend" required formControlName="motorMake">
                     <div class="invalid-feedback">
                       Please choose a username.
                     </div>
                   </div>
                 </div>
               </div>
+
+              <button class="btn btn-secondary" (click)="updateSpare()" >Update</button>
              
              
             </form>
           
-        </div>s
+        </div>
         <div class="modal-footer">
         </div>
     </ng-template>
