@@ -17,7 +17,12 @@ export class SparepartService {
   }
 
   getSparesBySellerId(id:any){
-    return this.http.get<any[]>(`${myUrl}/${id}`)
+    return this.http.get<any[]>(`${myUrl}/${id}`);
+  }
+
+  
+  countSparesBySellerId(id:any){
+    return this.http.get<any>(`${myUrl}/count/${id}`);
   }
 
   UpdateSpares(id:number,data: any){

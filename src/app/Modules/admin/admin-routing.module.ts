@@ -8,10 +8,11 @@ import { CustomerTableComponent } from './Components/customer-table/customer-tab
 import { AllMotorvehiclesComponent } from './Components/all-motorvehicles/all-motorvehicles.component';
 import { AllSparepartsComponent } from './Components/all-spareparts/all-spareparts.component';
 import { AdminProfileComponent } from './Components/admin-profile/admin-profile.component';
+import { AuthGuard } from './PathAuthorization/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  {path: 'nav', component: NavbarComponent, children:[
+  {path: 'nav', component: NavbarComponent,canActivate:[AuthGuard], children:[
       {path: 'home', component: HomeComponent},
       {path: 'seller-table', component: SellerTableComponent},
       {path: 'customer-table', component: CustomerTableComponent},

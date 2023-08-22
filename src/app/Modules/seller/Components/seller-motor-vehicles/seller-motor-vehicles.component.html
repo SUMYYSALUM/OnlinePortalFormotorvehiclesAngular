@@ -11,17 +11,18 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Motor Name</th>               
                 <th scope="col">Made</th>
                 <th scope="col">Model</th>
                 <th scope="col">Year</th>
                 <th scope="col">Mileage</th>
                 <th scope="col">Price</th>
                 <th scope="col">Condition</th>
-                <th scope="col">Transmission Type</th>
-                <th scope="col">Fuel Type</th>
-                <th scope="col">Exterior Color</th>
-                <th scope="col">Interior Color</th>
-                <th scope="col">Identification </th>
+                <th scope="col">Transmission</th>
+                <th scope="col">Fuel</th>
+                <th scope="col">Ext-Color</th>
+                <th scope="col">Int-Color</th>
+                <th scope="col">Identification</th>
                 <th scope="col">Action</th>
 
                 
@@ -30,6 +31,7 @@
         <tbody>
             <tr *ngFor="let x of motorsList; let y=index" >
                 <td>{{y+1}}</td>
+                <td>{{x.motorName}} </td>
                 <td>{{x.motorMade}} </td>
                 <td>{{x.motorModel}}</td>
                 <td>{{x.releaseYear}}</td>
@@ -199,6 +201,14 @@
                         Looks good!
                       </div>
                     </div>
+
+                    <div class="col-md-4 mb-3">
+                      <label for="validationCustom02">Motorvehicle Name</label>
+                      <input type="text" class="form-control" id="sellerpassword" placeholder="Motor vehicle name"  required formControlName="motorName">
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
                     
                   </div>
 
@@ -325,6 +335,15 @@
                     Looks good!
                   </div>
                 </div>
+
+                <div class="col-md-4 mb-3">
+                  <label for="validationCustom02">Motorvehicle Name</label>
+                  <input type="text" class="form-control" id="sellerpassword" placeholder="Motor vehicle name"  required formControlName="motorName">
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+
                 
               </div>
 

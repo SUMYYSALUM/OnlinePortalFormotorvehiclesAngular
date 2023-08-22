@@ -20,6 +20,10 @@ export class MotorvehicleService {
     return this.http.get<any[]>(`${myUrl}/${id}`)
   }
 
+  countMotorBySellerId(id:any){
+    return this.http.get<any>(`${myUrl}/count/${id}`)
+  }
+
   UpdateMotor(id:number,data: any){
     return this.http.put(`${url}/${id}`,data)
   }

@@ -5,7 +5,7 @@
           <div class="row g-0">
             <div class="col-md-4 gradient-custom text-center text-white"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; border-top-right-radius: .5rem; border-bottom-right-radius: .5rem;">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+              <img src="../../../../../assets/img/profile.png"
                 alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
               <h5> {{profile.firstname}} {{profile.lastname}} </h5>
               <p>Customer</p>
@@ -19,7 +19,7 @@
                   </div>
                   <div class="col-md-6">
                 <button class="btn btn-secondary" style="float: right;"
-                (click)="openToUpdate(updateModal)" >Update</button>
+                (click)="openToUpdate(updateModal)" (click)="dataToUpdate(profile)" >Update</button>
                   </div>
                 </div> <br>
                 <hr class="mt-0 mb-4">
@@ -71,7 +71,7 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <form class="needs-validation" novalidate >
+    <form class="needs-validation" novalidate [formGroup]="updateForm" >
       <div class="form-row">
         <div class="col-md-6 mb-3">
           <label for="validationCustom01">First name</label>
@@ -169,7 +169,7 @@
 
 
 
-      <button class="btn btn-secondary" type="submit" (click)="c('Save click')">Update</button>
+      <button class="btn btn-secondary" type="submit" (click)="c('Save click')" (click)="updateCustomer()" >Update</button>
     </form>
 
 

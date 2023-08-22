@@ -26,8 +26,8 @@ export class SellerRegisterComponent {
 
   registerForm: FormGroup = new FormGroup({
     sellerId: new FormControl(0),
-    firstname: new FormControl('', [Validators.required]),
-    lastname: new FormControl('', [Validators.required]),
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     phonenumber: new FormControl('', [Validators.required]),
     region: new FormControl('', [Validators.required]),

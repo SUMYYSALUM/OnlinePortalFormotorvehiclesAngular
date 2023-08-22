@@ -30,7 +30,6 @@ export class CustomerTableComponent {
 	})
 
 	updateCustomerform:FormGroup=new FormGroup({
-		customerId: new FormControl('', [Validators.required]),
 		firstname: new FormControl('', [Validators.required]),
 		lastname: new FormControl('', [Validators.required]),
 		username: new FormControl('', [Validators.required]),
@@ -84,6 +83,7 @@ export class CustomerTableComponent {
 		this.customerService.addcustomer(this.Customersform.value).subscribe(
 			(data)=>{
 				alert('Saved')
+				this.Customersform.reset()
 				this.getcustomer();
 			},
 			(error)=>{
@@ -111,7 +111,7 @@ export class CustomerTableComponent {
 				lastname: new FormControl(customer.lastname, [Validators.required]),
 				username: new FormControl(customer.username, [Validators.required]),
 				email:new FormControl(customer.email, [Validators.required]),
-				password:new FormControl(customer.password, [Validators.required]),
+				password:new FormControl('', [Validators.required]),
 				phonenumber:new FormControl(customer.phonenumber, [Validators.required]),
 				region:new FormControl(customer.region, [Validators.required]),
 				district:new FormControl(customer.district, [Validators.required]),

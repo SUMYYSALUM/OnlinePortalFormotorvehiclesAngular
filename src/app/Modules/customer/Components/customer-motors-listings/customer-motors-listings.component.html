@@ -1,38 +1,39 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-10">
-            <h1>All Motorvehicles</h1>
-        </div>
-        <!-- <div class="col-md-2">
-            <button class="btn btn-secondary" >Add MotorVehicle</button>
-        </div> -->
-    </div>  
-    
-    <div class="row">
-      <div class="col-md-4" style="margin-top: 4px;">
-        <div class="card">
-          <img src="../../../../../assets/img/thumbnail.jpg" class="card-img-top" alt="Card Image">
-          <div class="card-body">
-            <h5 class="card-title">Vehicle Information</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Make: Make</li>
-              <li class="list-group-item">Model: Model</li>
-              <li class="list-group-item">Condition: Condition</li>
-            </ul>
-            <div class="card-footer">
-              <button class="btn btn-primary" style="margin-right: 10px;" (click)="view(viewModal)" >More Details</button>
-              <button class="btn btn-success">Make Order</button>
-            </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h1>All Motorvehicles</h1>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" placeholder="Search by made, model or condition" (keyup)="onSearchChange($event)">
+     </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-4" style="margin-top: 4px;"  *ngFor="let x of filteredMotors">
+      <div class="card">
+        <img src="../../../../../assets/img//images.jpg" class="card-img-top" alt="Card Image">
+        <div class="card-body">
+          <h5 class="card-title">Vehicle Information</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Name: {{x.motorName}}</li>
+            <li class="list-group-item">Made: {{x.motorMade}}</li>
+            <li class="list-group-item">Model: {{x.motorModel}}</li>
+            <li class="list-group-item">Condition: {{x.motorCondition}}</li>
+          </ul>
+          <div class="card-footer">
+            <button class="btn btn-primary" style="margin-right: 10px;" (click)="view(viewModal, x)">More Details</button>            
+            <button class="btn btn-success" (click)="makeOrder(orderModal, x)">Make Order</button>
           </div>
         </div>
       </div>
-    
-      <!-- Add more card divs here -->
-
-     
-    </div>   
-    
     </div>
+  </div>
+</div>
+
+
+
+
 <ng-template #viewModal let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">All vehicle Informations</h4>
@@ -40,28 +41,39 @@
   </div>
   <div class="modal-body">
     <div class="card">
-      <img src="../../../../../assets/img/thumbnail.jpg" class="card-img-top" alt="Card Image">
+      <img src="../../../../../assets/img//images.jpg" class="card-img-top" alt="Card Image">
       <div class="card-body">
-        <h5 class="card-title">Vehicle Information</h5>
+        <h5 class="card-title">Vehicle Information & Seller Information</h5>
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Make: Make</li>
-              <li class="list-group-item">Model: Model</li>
-              <li class="list-group-item">Year: Year</li>
-              <li class="list-group-item">Mileage: Mileage</li>
-              <li class="list-group-item">Price: Price</li>
-              <li class="list-group-item">Condition: Condition</li>
+              <li class="list-group-item">Name: {{selectedMotor?.motorName}}</li>
+                <li class="list-group-item">Make: {{selectedMotor?.motorMade}}</li>
+                <li class="list-group-item">Model: {{selectedMotor?.motorModel}}</li>
+                <li class="list-group-item">Year: {{selectedMotor?.releaseYear}}</li>
+                <li class="list-group-item">Mileage: {{selectedMotor?.motorMileage}}</li>
+              <li class="list-group-item">Price: {{selectedMotor?.motorPrice}}</li>
+              <li class="list-group-item">Condition: {{selectedMotor?.motorPrice}}</li>
             </ul>
 
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Transmission Type: TransmissionType</li>
-              <li class="list-group-item">Fuel Type: FuelType</li>
-              <li class="list-group-item">Exterior Color: ExteriorColor</li>
-              <li class="list-group-item">Interior Color: InteriorColor</li>
-              <li class="list-group-item">Vehicle Identification Number: VehicleIdentificationNumber</li>
+              <li class="list-group-item">Transmission Type: {{selectedMotor?.transmissionType}}</li>
+              <li class="list-group-item">Fuel Type: {{selectedMotor?.fuelType}}</li>
+              <li class="list-group-item">Exterior Color: {{selectedMotor?.exteriorColor}}</li>
+              <li class="list-group-item">Interior Color: {{selectedMotor?.interiorColor}}</li>
+              <li class="list-group-item">Vehicle Identification Number: {{selectedMotor?.identification}}</li>
+            </ul>
+
+          </div>
+
+          <div class="col-sm-4">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Seller: {{selectedMotor?.firstName}} {{selectedMotor?.lastName}}</li>
+              <li class="list-group-item">Region: {{selectedMotor?.region}}</li>
+              <li class="list-group-item">District: {{selectedMotor?.district}}</li>
+              <li class="list-group-item">Ward: {{selectedMotor?.ward}}</li>
             </ul>
 
           </div>
@@ -73,6 +85,52 @@
     </div>
   </div>
 </ng-template>
+
+ <!-- modal ya kueka order  -->
+ <ng-template #orderModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Making Order</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form class="needs-validation" novalidate [formGroup]="orderForm" >
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom01">Item</label>
+          <input type="text" class="form-control"
+            value="{{selectedMotor?.motorName}}" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom01">Order Date</label>
+          <input type="Date" class="form-control"
+            formControlName="orderDate" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="validationCustom02">Quantity</label>
+          <input type="number" class="form-control" placeholder="Quantity"
+            formControlName="quantity" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        
+      </div>
+
+      <button class="btn btn-secondary" type="submit" (click)="c('Save click')" (click)="postOrder()" >Confirm Order</button>
+    </form>
+
+
+  </div>
+ 
+</ng-template>
+
 
     
   

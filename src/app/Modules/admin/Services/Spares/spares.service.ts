@@ -21,6 +21,7 @@ export class SparesService {
   DeleteSpares(id:number){
     return this.http.delete(`${url}/${id}`)
   }
+  
   CountSpares(){
     return this.http.get(`${url}/count`)
   }

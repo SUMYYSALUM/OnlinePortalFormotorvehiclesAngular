@@ -24,5 +24,9 @@ export class CustomerService {
     return this.http.post(`${url}`, data);
   }
 
+  updateCustomer(id:any, data:any){
+    return this.http.put(`${url}/${id}`, data)
+  }
+
 
 }

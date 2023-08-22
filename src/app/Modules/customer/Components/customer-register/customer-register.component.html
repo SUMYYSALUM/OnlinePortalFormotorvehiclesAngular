@@ -31,17 +31,37 @@
 
             <div class="col-md-6">
                 <small *ngIf="registerForm.get('phonenumber')?.hasError('required')" style="color: red;">Phonenumber is required*</small>               
-                <input type="text" placeholder="Enter your phone number" formControlName="phonenumber" >   
+                <small *ngIf="registerForm.get('phonenumber')?.hasError('minlength')" style="color: red;">Phonenumber must be 10 digits*</small>               
+
+                <input type="number" placeholder="Enter your phone number" formControlName="phonenumber" >   
             </div>
         </div>
         <div class="row">
             <div class="col-md-5">
                 <small *ngIf="registerForm.get('region')?.hasError('required')" style="color: red;">Region is required*</small>
-                <input type="text" placeholder="Enter your region" formControlName="region" >
+                <select placeholder="Enter your region" formControlName="region" >
+                  <option value="Mjini Magharibi">Mjini Magharibi</option>
+                  <option value="Kaskazini Unguja">Kaskazini Unguja</option>
+                  <option value="Kusini Unguja">Kusini Unguja</option>
+                  <option value="Kaskazini Pemba">Kaskazini Pemba</option>
+                  <option value="Kusini Pemba">Kusini Pemba</option>
+                  </select>
             </div>
             <div class="col-md-4">
                 <small *ngIf="registerForm.get('district')?.hasError('required')" style="color: red;">District is required*</small>
-                <input type="text" placeholder="Enter your district" formControlName="district" >   
+                <select placeholder="Enter your district" formControlName="district" >   
+                  <option value="Mjini">Mjini</option>
+                  <option value="Magharibi A">Magharibi A</option>
+                  <option value="Magharibi B">Magharibi B</option>
+                  <option value="Kaskazini A">Kaskazini A</option>
+                  <option value="Kaskazini B">Kaskazini B</option>
+                  <option value="Kati">Kati</option>
+                  <option value="Kusini">Kusini</option>
+                  <option value="Micheweni">Micheweni</option>
+                  <option value="Wete">Wete</option>
+                  <option value="Mkoani">Mkoani</option>
+                  <option value="Chake chakes">Chake chake</option>
+                  </select>
             </div>
             <div class="col-md-3">
                 <small *ngIf="registerForm.get('ward')?.hasError('required')" style="color: red;">Ward is required*</small>

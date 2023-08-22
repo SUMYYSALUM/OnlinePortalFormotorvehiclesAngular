@@ -20,4 +20,8 @@ export class AdminService {
     return this.http.get(`${url}/${id}`)
   }
 
+  updateAdmin(id:any, data:any){
+    return this.http.put(`${url}/${id}`, data);
+  }
+
 }

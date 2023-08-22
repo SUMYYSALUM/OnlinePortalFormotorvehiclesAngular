@@ -6,8 +6,11 @@
                 	<p class="text-uppercase mar-btm text-sm">Motorvehicle Listings</p>
                 	<i class="fa fa-car fa-5x"></i>
                 	<hr>
-                	<p class="h2 text-thin">254</p>
-                	<!-- <small><span class="text-semibold">7%</span> Higher than yesterday</small> -->
+                	<p class="h2 text-thin">{{MotorsNo}}</p>
+                	<small><span class="text-semibold"><i class="fa fa-car fa-fw"></i></span> 
+						<a style="text-decoration: none; color: white;" [routerLink]="['../motors-list']">
+							See more About Spareparts</a>
+					</small>
                 </div>
             </div>
         </div>
@@ -17,30 +20,39 @@
         			<p class="text-uppercase mar-btm text-sm">Spareparts Listing</p>
         			<i class="fa fa-gears fa-5x"></i>
         			<hr>
-        			<p class="h2 text-thin">873</p>
-        			<!-- <small><span class="text-semibold"><i class="fa fa-unlock-alt fa-fw"></i> 154</span> Unapproved comments</small> -->
+        			<p class="h2 text-thin">{{SparesNo}}</p>
+        			<small><span class="text-semibold"><i class="fa fa-gears fa-fw"></i></span>
+						<a style="text-decoration: none; color: white;" [routerLink]="['../spares-list']">
+							See more About Spareparts</a>
+						</small>
         		</div>
         	</div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
         	<div class="panel panel-primary panel-colorful">
         		<div class="panel-body text-center">
-        			<p class="text-uppercase mar-btm text-sm">My pending orders</p>
+        			<p class="text-uppercase mar-btm text-sm">Motor orders</p> 
         			<i class="fa fa-shopping-cart fa-5x"></i>
         			<hr>
-        			<p class="h2 text-thin">242</p>
-        			<!-- <small><span class="text-semibold"><i class="fa fa-shopping-cart fa-fw"></i> 954</span> Sales in this month</small> -->
+        			<p class="h2 text-thin">{{MotorsOrdersNo}}</p>
+        			<small><span class="text-semibold"><i class="fa fa-shopping-cart fa-fw"></i></span> 
+						<a style="text-decoration: none; color: white;" [routerLink]="['../motor-order']">
+							See more About Motor Orders</a>
+					</small>
         		</div>
         	</div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
         	<div class="panel panel-info panel-colorful">
         		<div class="panel-body text-center">
-        			<p class="text-uppercase mar-btm text-sm">My Approved Orders</p>
+        			<p class="text-uppercase mar-btm text-sm">Spare Orders</p>
         			<i class="fa fa-cart-arrow-down fa-5x"></i>
         			<hr>
-        			<p class="h2 text-thin">428</p>
-        			<!-- <small><span class="text-semibold"><i class="fa fa-dollar fa-fw"></i> 22,675</span> Total Earning</small> -->
+        			<p class="h2 text-thin">{{SparesOrdersNo}}</p>
+        			<small><span class="text-semibold"><i class="fa fa-cart-arrow-down fa-fw"></i></span>
+						<a style="text-decoration: none; color: white;" [routerLink]="['../approved-order']">
+							See more About Spares Orders</a>
+					</small>
         		</div>
         	</div>
         </div>        

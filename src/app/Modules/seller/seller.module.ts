@@ -10,9 +10,9 @@ import { SellerMotorVehiclesComponent } from './Components/seller-motor-vehicles
 import { SellerSparepartComponent } from './Components/seller-sparepart/seller-sparepart.component';
 import { SellerProfileComponent } from './Components/seller-profile/seller-profile.component';
 import { SellerHomeComponent } from './Components/seller-home/seller-home.component';
-import { SellerPendingOrderComponent } from './Components/seller-pending-order/seller-pending-order.component';
-import { SellerAprovedOrderComponent } from './Components/seller-aproved-order/seller-aproved-order.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SellerMotorOrdersComponent } from './Components/seller-motor-orders/seller-motor-orders.component';
+import { SellerSpareOrdersComponent } from './Components/seller-spare-orders/seller-spare-orders.component';
 
 
 @NgModule({
@@ -25,8 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SellerSparepartComponent,
     SellerProfileComponent,
     SellerHomeComponent,
-    SellerPendingOrderComponent,
-    SellerAprovedOrderComponent
+    SellerMotorOrdersComponent,
+    SellerSpareOrdersComponent
   ],
   imports: [
     CommonModule,

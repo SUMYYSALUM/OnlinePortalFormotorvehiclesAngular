@@ -29,7 +29,7 @@ export class CustomerRegisterComponent {
     firstname: new FormControl('', [Validators.required]),
     lastname: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
-    phonenumber: new FormControl('', [Validators.required]),
+    phonenumber: new FormControl('', [Validators.required, Validators.minLength(10)]),
     region: new FormControl('', [Validators.required]),
     district: new FormControl('', [Validators.required]),
     ward: new FormControl('', [Validators.required]),

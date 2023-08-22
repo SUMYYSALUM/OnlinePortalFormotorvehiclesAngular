@@ -7,11 +7,11 @@ import { CustomerRegisterComponent } from './Components/customer-register/custom
 import { CustomerNavComponent } from './Components/customer-nav/customer-nav.component';
 import { CustomerHomeComponent } from './Components/customer-home/customer-home.component';
 import { CustomerProfileComponent } from './Components/customer-profile/customer-profile.component';
-import { CustomerPendingOrdersComponent } from './Components/customer-pending-orders/customer-pending-orders.component';
-import { CustomerApprovedOrdersComponent } from './Components/customer-approved-orders/customer-approved-orders.component';
 import { CustomerSpareListingsComponent } from './Components/customer-spare-listings/customer-spare-listings.component';
 import { CustomerMotorsListingsComponent } from './Components/customer-motors-listings/customer-motors-listings.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerMotorOrdersComponent } from './Components/customer-motor-orders/customer-motor-orders.component';
+import { CustomerSpareOrdersComponent } from './Components/customer-spare-orders/customer-spare-orders.component';
 
 
 @NgModule({
@@ -21,10 +21,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CustomerNavComponent,
     CustomerHomeComponent,
     CustomerProfileComponent,
-    CustomerPendingOrdersComponent,
-    CustomerApprovedOrdersComponent,
     CustomerSpareListingsComponent,
-    CustomerMotorsListingsComponent
+    CustomerMotorsListingsComponent,
+    CustomerMotorOrdersComponent,
+    CustomerSpareOrdersComponent
   ],
   imports: [
     CommonModule,

@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
       this.admin=data;
       sessionStorage.setItem("adminId", JSON.stringify(this.admin.adminId));
       this.router.navigate(['Admin/nav/home'])
-      alert("Logged In Successfully")
     }, error=>{
       alert("Failed to login")
     })

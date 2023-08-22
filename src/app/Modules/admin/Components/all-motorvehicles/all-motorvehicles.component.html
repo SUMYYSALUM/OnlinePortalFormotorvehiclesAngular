@@ -11,6 +11,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Motor Name</th>
                 <th scope="col">Release Year</th>
                 <th scope="col">Made</th>
                 <th scope="col">Mileage</th>
@@ -27,6 +28,7 @@
         <tbody>
             <tr *ngFor="let x of Motors; let y=index">
                 <td>{{y+1}}</td>
+                <td>{{x.motorName}}</td>
                 <td>{{x.releaseYear}}</td>
                 <td>{{x.motorMade}}</td>
                 <td>{{x.motorMileage}}</td>
@@ -40,17 +42,16 @@
 
 
           <td>
-            <button class="btn btn-success" style="margin: 3px;" 
-            >Edit</button>
+           
     
-            <button class="btn btn-danger" (click)="openToDelete(deleteModal)" >Delete</button>
+            <button class="btn btn-danger" (click)="openToDelete(deleteModal)" >Remove</button>
           <ng-template #deleteModal let-c="close" let-d="dismiss">
             <div class="modal-header">
-              <h4 class="modal-title" id="modal-basic-title">Deleting Motorvehicle</h4>
+              <h4 class="modal-title" id="modal-basic-title">Removing Motorvehicle</h4>
               <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
             </div>
             <div class="modal-body">
-              <p>Are you sure to delete?</p>
+              <p>Are you sure to remove?</p>
              
             </div>
             <div class="modal-footer">
@@ -65,21 +66,7 @@
         </tbody>
     </table>
     
-    <div class="d-flex justify-content-between p-2">
-        <!-- <ngb-pagination
-            [collectionSize]="collectionSize"
-            [(page)]="page"
-            [pageSize]="pageSize"
-            (pageChange)="refreshCountries()"
-        >
-        </ngb-pagination> -->
-    
-        <!-- <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
-            <option [ngValue]="2">2 items per page</option>
-            <option [ngValue]="4">4 items per page</option>
-            <option [ngValue]="6">6 items per page</option>
-        </select> -->
-    </div>
+   
     </div>
     
     

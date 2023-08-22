@@ -9,36 +9,32 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Sparepart name</th>
-                <th scope="col">Location</th>
+                <th scope="col">Sparepart Name</th>
                 <th scope="col">Price</th>
-                <th scope="col">Part description</th>
-                <th scope="col">MotorVehicle model</th>
-                <th scope="col">MotorVehicle make</th>
+                <th scope="col">Part Description</th>
+                <th scope="col">Motorvehicle Model</th>
+                <th scope="col">Motorvehicle Made</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let x of Spares; let y=index">
                 <td>{{y+1}}</td>
-                <td>{{x.partname}}</td>
-                <td>{{x.location}}</td>
+                <td>{{x.partName}}</td>
                 <td>{{x.price}}</td>
-                <td>{{x.partdescription}}</td>
-                <td>{{x.motorvehiclemodel}}</td>
-                <td>{{x.motorvehiclemake}}</td>
+                <td>{{x.description}}</td>
+                <td>{{x.motorModel}}</td>
+                <td>{{x.motorMake}}</td>
                 <td>
-                  <button class="btn btn-success" style="margin: 3px;" 
-                  >Edit</button>
-          
-                  <button class="btn btn-danger" (click)="openToDelete(deleteModal)" >Delete</button>
+                          
+                  <button class="btn btn-danger" (click)="openToDelete(deleteModal)" >Remove</button>
                 <ng-template #deleteModal let-c="close" let-d="dismiss">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title">Deleting Sparepart</h4>
+                    <h4 class="modal-title" id="modal-basic-title">Removing Sparepart</h4>
                     <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
                   </div>
                   <div class="modal-body">
-                    <p>Are you sure to delete?</p>
+                    <p>Are you sure to remove?</p>
                    
                   </div>
                   <div class="modal-footer">

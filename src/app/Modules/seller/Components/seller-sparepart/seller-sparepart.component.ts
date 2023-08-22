@@ -41,6 +41,7 @@ export class SellerSparepartComponent {
 	addSpare(){
 		this.spareService.addSpare(this.SparePostForm.value).subscribe(response=>{
 			alert("Spare part added successfully")
+			this.SparePostForm.reset()
 			this.getSpares();
 			this.modalService.dismissAll()
 		},

@@ -23,5 +23,9 @@ export class SellerService {
     return this.http.post(`${url}`, data);
   }
 
+  updateSeller(id:any, data:any){
+    return this.http.put(`${url}/${id}`, data)
+  }
+
 
 }

@@ -30,7 +30,6 @@ export class CustomerLoginComponent {
       this.customer=data;
       sessionStorage.setItem("customerId", JSON.stringify(this.customer.customerId));
       this.router.navigate(['Customer/nav/customer-home'])
-      alert("Logged In Successfully")
     }, error=>{
       alert("Failed to login")
     })

@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h1>Sparepart orders</h1>
+        </div>
+      
+    </div>    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Order-date</th>
+                <th scope="col">Item</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor ="let x of orders; let y = index;">
+                <td>{{y+1}}</td>
+                <td>{{x.orderDate}}</td>
+                <td>{{x.partName}}</td>
+                <td>{{x.price}}</td>
+                <td>{{x.quantity}}</td>
+                <td>{{x.amount}} </td>
+                <td>{{x.firstname}} {{x.lastname}}</td>
+                <td>{{x.ward}}, {{x.district}}, {{x.region}}</td>
+                <td>{{x.phonenumber}}</td>              
+          
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    </div>   

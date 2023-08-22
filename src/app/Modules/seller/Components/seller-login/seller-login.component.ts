@@ -32,7 +32,6 @@ export class SellerLoginComponent {
       this.seller=data;
       sessionStorage.setItem("sellerId", JSON.stringify(this.seller.sellerId));
       this.router.navigate(['Seller/nav/seller-home'])
-      alert("Logged In Successfully")
     }, error=>{
       alert("Failed to login")
     })

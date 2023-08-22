@@ -21,6 +21,7 @@ export class MotorsService {
   DeleteMotors(id:number){
     return this.http.delete(`${url}/${id}`)
   }
+  
   CountMotors(){
     return this.http.get(`${url}/count`)
   }

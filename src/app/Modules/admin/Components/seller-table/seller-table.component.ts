@@ -71,6 +71,7 @@ Sellersform:FormGroup=new FormGroup({
 			(data)=>{
 				alert('Saved')
 				this.getseller();
+
 				this.Sellersform.reset();
 			},
 			(error)=>{
@@ -118,9 +119,7 @@ Sellersform:FormGroup=new FormGroup({
 	
 
 	
-	oldPassword!: String;
 	editSeller(seller: Seller) {
-		this.oldPassword = seller.password; // Store the old password in a separate variable
 	  
 		this.updateSellersform = new FormGroup({
 		  sellerId: new FormControl(seller.sellerId, [Validators.required]),
@@ -136,17 +135,10 @@ Sellersform:FormGroup=new FormGroup({
 	  }
 	  
 
-	invalidOldPassword: boolean = false;
 
 
 	updateSeller() {
-		const enteredOldPassword = this.updateSellersform.controls['oldPassword'].value;
 		const sellerId = this.updateSellersform.controls['sellerId'].value;
-	
-		if (enteredOldPassword !== this.oldPassword) {
-		  this.invalidOldPassword = true;
-		  return;
-		}
 	
 		this.sellerService.Updateseller(sellerId, this.updateSellersform.value).subscribe(
 		  (response) => {
@@ -154,7 +146,6 @@ Sellersform:FormGroup=new FormGroup({
 			this.getseller();
 			// Close the modal programmatically if the update was successful
 			this.modalService.dismissAll();
-			this.invalidOldPassword = false;
 		  },
 		  (error) => {
 			alert('Failed');

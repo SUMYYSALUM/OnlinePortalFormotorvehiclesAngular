@@ -40,7 +40,9 @@ export class SellerMotorVehiclesComponent {
 			motorMileage: new FormControl('', [Validators.required]),
 			motorMake: new FormControl('', [Validators.required]),
 			motorMade:new FormControl('', [Validators.required]),
-			releaseYear:new FormControl('', [Validators.required])
+			releaseYear:new FormControl('', [Validators.required]),
+			motorName:new FormControl('', [Validators.required]),
+
 
 		
 		});
@@ -49,6 +51,7 @@ export class SellerMotorVehiclesComponent {
 		addMotor(){
 			this.motorService.addMotor(this.MotorPostForm.value).subscribe(response=>{
 				alert("Motorvehicle added successfully")
+				this.MotorPostForm.reset()
 				this.getMotor();
 				this.modalService.dismissAll()
 			},
@@ -83,7 +86,9 @@ export class SellerMotorVehiclesComponent {
 		motorMileage: new FormControl('', [Validators.required]),
 		motorModel: new FormControl('', [Validators.required]),
 		motorMade:new FormControl('', [Validators.required]),
-		releaseYear:new FormControl('', [Validators.required])
+		releaseYear:new FormControl('', [Validators.required]),
+		motorName:new FormControl('', [Validators.required]),
+
 
 	
 	});
@@ -101,7 +106,9 @@ export class SellerMotorVehiclesComponent {
 		motorMileage: new FormControl('', [Validators.required]),
 		motorModel: new FormControl('', [Validators.required]),
 		motorMade:new FormControl('', [Validators.required]),
-		releaseYear:new FormControl('', [Validators.required])
+		releaseYear:new FormControl('', [Validators.required]),
+		motorName:new FormControl('', [Validators.required]),
+
 	
 	});
 
@@ -120,7 +127,9 @@ export class SellerMotorVehiclesComponent {
 		motorMileage: new FormControl(motor.motorMileage, [Validators.required]),
 		motorModel: new FormControl(motor.motorModel, [Validators.required]),
 		motorMade:new FormControl(motor.motorMade, [Validators.required]),
-		releaseYear:new FormControl(motor.releaseYear, [Validators.required])
+		releaseYear:new FormControl(motor.releaseYear, [Validators.required]),
+		motorName:new FormControl(motor.motorName, [Validators.required]),
+
 	
 		
 		})

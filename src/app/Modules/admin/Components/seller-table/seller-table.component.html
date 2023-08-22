@@ -115,14 +115,34 @@
             <div class="form-row">
               <div class="col-md-4 mb-3">
                 <label for="validationCustom03">Region</label>
-                <input type="text" class="form-control" id="sellerregion" placeholder="Region" required formControlName="region">
+                <select class="form-control" id="sellerregion" placeholder="Region" required formControlName="region">
+                  <option value="Mjini Magharibi">Mjini Magharibi</option>
+                  <option value="Kaskazini Unguja">Kaskazini Unguja</option>
+                  <option value="Kusini Unguja">Kusini Unguja</option>
+                  <option value="Kaskazini Pemba">Kaskazini Pemba</option>
+                  <option value="Kusini Pemba">Kusini Pemba</option>
+       
+                  </select>
                 <div class="invalid-feedback">
                   Please provide a valid city.
                 </div>
               </div>
               <div class="col-md-4 mb-3">
                 <label for="validationCustom04">District</label>
-                <input type="text" class="form-control" id="sellerdistrict" placeholder="District" required formControlName="district">
+                <select class="form-control" id="sellerdistrict" placeholder="District" required formControlName="district">
+                  <option value="Mjini">Mjini</option>
+                  <option value="Magharibi A">Magharibi A</option>
+                  <option value="Magharibi B">Magharibi B</option>
+                  <option value="Kaskazini A">Kaskazini A</option>
+                  <option value="Kaskazini B">Kaskazini B</option>
+                  <option value="Kati">Kati</option>
+                  <option value="Kusini">Kusini</option>
+                  <option value="Micheweni">Micheweni</option>
+                  <option value="Wete">Wete</option>
+                  <option value="Mkoani">Mkoani</option>
+                  <option value="Chake chakes">Chake chake</option>
+                 
+                  </select>
                 <div class="invalid-feedback">
                   Please provide a valid state.
                 </div>
@@ -154,7 +174,7 @@
               </div>
             </div>
             
-            <button class="btn btn-secondary" type="submit" (click)="c('Save click')">Submit</button>
+            <button class="btn btn-secondary" type="submit" (click)="c('Save click')"[disabled]="Sellersform.invalid">Submit</button>
           </form>
           
 	</div>
@@ -239,7 +259,6 @@
                     </button>
                   </div>
                 </div>
-                <div *ngIf="invalidOldPassword" class="text-danger">Invalid old password.</div>
               </div>
               
               <div class="col-md-4 mb-3">
